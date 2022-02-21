@@ -1,33 +1,29 @@
 package auth
 
 import (
-	"github.com/keptn/cli2/pkg/store"
+	api "github.com/keptn/go-utils/pkg/api/utils"
 )
 
-type AuthOptions struct {
-	Endpoint        string
-	APIToken        string
-	SSO             bool
-	SSOLogout       bool
-	SSODiscovery    string
-	SSOClientID     string
-	SSOScopes       []string
-	SSOClientSecret string
-}
-
 type Authenticator interface {
-	Auth(AuthOptions) error
+	Auth(apiEndpoint, apiToken string) (api.KeptnInterface, error)
+	ReAuth() (api.KeptnInterface, error)
 }
 
-type TokenAuthenticator struct {
-	authStore store.AuthStore
+type TestAuthenticator struct {
+	AuthFn   func(apiEndpoint, apiToken string) (api.KeptnInterface, error)
+	ReauthFn func() (api.KeptnInterface, error)
 }
 
-func New(store store.AuthStore) *TokenAuthenticator {
-	return &TokenAuthenticator{authStore: store}
+func (t TestAuthenticator) Auth(apiEndpoint, apiToken string) (api.KeptnInterface, error) {
+	if t.AuthFn != nil {
+		return t.AuthFn(apiEndpoint, apiToken)
+	}
+	panic("AuthFn mock of TestAuthenticator called but not set")
 }
 
-func (a *TokenAuthenticator) Auth(opts AuthOptions) error {
-	//TODO implement me
-	panic("implement me")
+func (t TestAuthenticator) ReAuth() (api.KeptnInterface, error) {
+	if t.ReauthFn != nil {
+		return t.ReauthFn()
+	}
+	panic("ReauthFn mock of TestAuthenticator called but not set")
 }

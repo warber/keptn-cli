@@ -19,9 +19,9 @@ func NewTestKeptn(t *testing.T) *TestKeptn {
 	testAuthenticator := &auth.TestAuthenticator{}
 	testContext := context.NewTestContext(t)
 	k := &Keptn{
-		KeptnProjectInterface: keptnProjectInterfaceMock,
-		Authenticator:         testAuthenticator,
-		Context:               testContext.Context,
+		ProjectInterface: keptnProjectInterfaceMock,
+		Authenticator:    testAuthenticator,
+		Context:          testContext.Context,
 	}
 
 	return &TestKeptn{

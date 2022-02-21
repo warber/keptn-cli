@@ -8,6 +8,6 @@ import (
 
 type Keptn struct {
 	*context.Context
-	KeptnProjectInterface api.ProjectsV1Interface
-	Authenticator         auth.Authenticator
+	ProjectInterface api.ProjectsV1Interface
+	Authenticator    auth.Authenticator
 }

@@ -1,11 +1,19 @@
 package keptn
 
-import "github.com/keptn/cli2/pkg/auth"
+type AuthOptions struct {
+	Endpoint string
+	APIToken string
+}
 
-func (k *Keptn) Auth(opts auth.AuthOptions) error {
-	err := k.Authenticator.Auth(opts)
+func (o *AuthOptions) Validate() error {
+	return nil
+}
+
+func (k *Keptn) Auth(opts AuthOptions) error {
+	apiSet, err := k.Authenticator.Auth(opts.Endpoint, opts.APIToken)
 	if err != nil {
 		return err
 	}
+	k.ProjectInterface = apiSet.ProjectsV1()
 	return nil
 }

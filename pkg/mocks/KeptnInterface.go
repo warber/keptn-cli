@@ -210,44 +210,6 @@ func (_c *KeptnInterface_ProjectsV1_Call) Return(_a0 api.ProjectsV1Interface) *K
 	return _c
 }
 
-// ProxyV1 provides a mock function with given fields:
-func (_m *KeptnInterface) ProxyV1() api.ProxyV1Interface {
-	ret := _m.Called()
-
-	var r0 api.ProxyV1Interface
-	if rf, ok := ret.Get(0).(func() api.ProxyV1Interface); ok {
-		r0 = rf()
-	} else {
-		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(api.ProxyV1Interface)
-		}
-	}
-
-	return r0
-}
-
-// KeptnInterface_ProxyV1_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ProxyV1'
-type KeptnInterface_ProxyV1_Call struct {
-	*mock.Call
-}
-
-// ProxyV1 is a helper method to define mock.On call
-func (_e *KeptnInterface_Expecter) ProxyV1() *KeptnInterface_ProxyV1_Call {
-	return &KeptnInterface_ProxyV1_Call{Call: _e.mock.On("ProxyV1")}
-}
-
-func (_c *KeptnInterface_ProxyV1_Call) Run(run func()) *KeptnInterface_ProxyV1_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run()
-	})
-	return _c
-}
-
-func (_c *KeptnInterface_ProxyV1_Call) Return(_a0 api.ProxyV1Interface) *KeptnInterface_ProxyV1_Call {
-	_c.Call.Return(_a0)
-	return _c
-}
-
 // ResourcesV1 provides a mock function with given fields:
 func (_m *KeptnInterface) ResourcesV1() api.ResourcesV1Interface {
 	ret := _m.Called()

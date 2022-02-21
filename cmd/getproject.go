@@ -6,7 +6,7 @@ import (
 )
 
 func createGetProjectsCommand(k *keptn.Keptn) *cobra.Command {
-	opts := &keptn.GetProjectsOptions{}
+	opts := keptn.GetProjectsOptions{}
 
 	cmd := &cobra.Command{
 		Use:   "project",
@@ -22,7 +22,7 @@ func createGetProjectsCommand(k *keptn.Keptn) *cobra.Command {
 			if err != nil {
 				return err
 			}
-			return k.PrintProjects(projects, opts)
+			return k.PrintProjects(projects, &opts)
 		},
 	}
 

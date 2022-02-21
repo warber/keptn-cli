@@ -60,7 +60,7 @@ func TestGetProject(t *testing.T) {
 
 		k := NewTestKeptn(t)
 		k.KeptnProjectInterfaceMock.EXPECT().GetAllProjects().Return([]*models.Project{p1, p2}, nil)
-		projects, err := k.GetProjects(&GetProjectsOptions{})
+		projects, err := k.GetProjects(GetProjectsOptions{})
 		require.Nil(t, err)
 		assert.Equal(t, 2, len(projects))
 	})
@@ -78,7 +78,7 @@ func TestGetProject(t *testing.T) {
 
 		k := NewTestKeptn(t)
 		k.KeptnProjectInterfaceMock.EXPECT().GetAllProjects().Return([]*models.Project{p1, p2}, nil)
-		projects, err := k.GetProjects(&GetProjectsOptions{
+		projects, err := k.GetProjects(GetProjectsOptions{
 			ProjectName: "project1",
 		})
 		require.Nil(t, err)
@@ -98,7 +98,7 @@ func TestGetProject(t *testing.T) {
 
 		k := NewTestKeptn(t)
 		k.KeptnProjectInterfaceMock.EXPECT().GetAllProjects().Return([]*models.Project{p1, p2}, nil)
-		projects, err := k.GetProjects(&GetProjectsOptions{
+		projects, err := k.GetProjects(GetProjectsOptions{
 			ProjectName: "echoproject",
 		})
 		require.Nil(t, err)

@@ -1,22 +1,21 @@
 package main
 
 import (
-	"github.com/keptn/cli2/pkg/auth"
 	"github.com/keptn/cli2/pkg/keptn"
 	"github.com/spf13/cobra"
 )
 
 func createAuthCommand(k *keptn.Keptn) *cobra.Command {
-	opts := auth.AuthOptions{}
+	opts := keptn.AuthOptions{}
 
 	cmd := &cobra.Command{
 		Use:   "auth --endpoint=https://api.keptn.MY.DOMAIN.COM --api-token=SECRET_TOKEN",
 		Short: "Authenticates the Keptn CLI against a Keptn installation",
 		PreRunE: func(cmd *cobra.Command, args []string) error {
-			return nil
+			return opts.Validate()
 		},
 		RunE: func(cmd *cobra.Command, args []string) error {
-			return nil
+			return k.Auth(opts)
 		},
 	}
 

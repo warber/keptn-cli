@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/keptn/cli2/pkg/auth"
 	"github.com/keptn/cli2/pkg/context"
 	"github.com/keptn/cli2/pkg/keptn"
 	"github.com/keptn/cli2/pkg/mocks"
@@ -17,8 +18,9 @@ func main() {
 
 func createRootCommand() *cobra.Command {
 	k := &keptn.Keptn{
-		Context:               context.New(),
-		KeptnProjectInterface: &mocks.ProjectsV1Interface{},
+		Context:          context.New(),
+		ProjectInterface: &mocks.ProjectsV1Interface{},
+		Authenticator:    &auth.TestAuthenticator{},
 	}
 	cmd := &cobra.Command{
 		Use:     "keptn",

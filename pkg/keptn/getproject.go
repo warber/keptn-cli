@@ -21,8 +21,8 @@ func (o *GetProjectsOptions) Validate(args []string) error {
 	return nil
 }
 
-func (k *Keptn) GetProjects(opts *GetProjectsOptions) ([]*models.Project, error) {
-	projects, err := k.KeptnProjectInterface.GetAllProjects()
+func (k *Keptn) GetProjects(opts GetProjectsOptions) ([]*models.Project, error) {
+	projects, err := k.ProjectInterface.GetAllProjects()
 	if err != nil {
 		return nil, err
 	}
